@@ -1,4 +1,7 @@
-package com.company;
+package com.company.buildings;
+
+import com.company.exceptions.InvalidRoomsCountException;
+import com.company.exceptions.InvalidSpaceAreaException;
 
 public class Flat {
     private double square;
@@ -13,6 +16,12 @@ public class Flat {
     }
 
     public Flat(double square, int rooms){
+        if (rooms <0){
+            throw new InvalidRoomsCountException();
+        }
+        if(square <0){
+            throw new InvalidSpaceAreaException();
+        }
         this.square = square;
         this.rooms = rooms;
     }
@@ -22,6 +31,9 @@ public class Flat {
     }
 
     public void setRooms(int rooms){
+        if (rooms <0){
+            throw new InvalidRoomsCountException();
+        }
         this.rooms = rooms;
     }
 
@@ -30,6 +42,9 @@ public class Flat {
     }
 
     public void setSquare(double square){
+        if(square <0){
+            throw new InvalidSpaceAreaException();
+        }
         this.square = square;
     }
 

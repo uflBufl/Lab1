@@ -1,14 +1,20 @@
-package com.company;
+package com.company.buildings;
+
+import com.company.buildings.Flat;
 
 public class DwellingFloor {
     private Flat flats[];
 
     public DwellingFloor(int num){
         flats = new Flat[num];
+//        for(int i = 0;i<num;i++){
+//            flats[i] = new Flat();
+//        }
     }
 
     public DwellingFloor(Flat flats[]){
         this.flats = flats;
+
     }
 
     public int getNumFlats(){

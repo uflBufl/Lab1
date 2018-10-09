@@ -1,4 +1,7 @@
-package com.company;
+package com.company.buildings;
+
+import com.company.exceptions.FloorIndexOutOfBoundsException;
+import com.company.exceptions.SpaceIndexOutOfBoundsException;
 
 public class Dwelling {
     private DwellingFloor dwellingFloor[];
@@ -47,14 +50,23 @@ public class Dwelling {
     }
 
     public DwellingFloor getFloorByNum(int numFloor){
+        if(numFloor < 0|| numFloor > dwellingFloor.length){
+            throw new FloorIndexOutOfBoundsException();
+        }
         return dwellingFloor[numFloor];
     }
 
     public void editFloor(int numFloor, DwellingFloor dwellingFloor){
+        if(numFloor < 0|| numFloor > this.dwellingFloor.length){
+            throw new FloorIndexOutOfBoundsException();
+        }
         this.dwellingFloor[numFloor] = dwellingFloor;
     }
 
     public Flat getFlatByNum(int numFlat){
+        if(numFlat < 0 || numFlat>getNumFlats()){
+            throw new SpaceIndexOutOfBoundsException();
+        }
         int i = 0;
         int numFlat1 = numFlat;
         int num = numFlat1;
@@ -67,6 +79,9 @@ public class Dwelling {
     }
 
     public void editFlatByNum(int numFlat, Flat flat){
+        if(numFlat < 0 || numFlat>getNumFlats()){
+            throw new SpaceIndexOutOfBoundsException();
+        }
         int i = 0;
         int numFlat1 = numFlat-1;
         int num = numFlat1;
@@ -79,6 +94,9 @@ public class Dwelling {
     }
 
     public void newFlatByNum(int numFlat, Flat flat){
+        if(numFlat < 0 || numFlat>getNumFlats()+1){
+            throw new SpaceIndexOutOfBoundsException();
+        }
         int i = 0;
         int numFlat1 = numFlat-1;
         int num = numFlat1;
@@ -91,6 +109,9 @@ public class Dwelling {
     }
 
     public void deleteFlatByNum(int numFlat){
+        if(numFlat < 0 || numFlat>getNumFlats()){
+            throw new SpaceIndexOutOfBoundsException();
+        }
         int i = 0;
         int numFlat1 = numFlat-1;
         int num = numFlat1;
